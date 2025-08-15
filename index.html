@@ -1,138 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My AI Journey</title>
-    <style>
-        :root {
-            --primary-blue: #1e3a8a; /* Deep blue */
-            --secondary-blue: #3b82f6; /* Bright accent */
-            --light-blue: #e0f2fe; /* Soft background */
-            --white: #ffffff;
-            --gray: #f1f5f9;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>My AI Journey</title>
+<style>
+    :root {
+        --bg-dark: #0b0f1c; /* Sampled from screenshot */
+        --text-light: #ffffff;
+        --text-muted: #94a3b8;
+        --gradient-text: linear-gradient(90deg, #d946ef, #6366f1, #3b82f6);
+        --gradient-btn: linear-gradient(90deg, #6366f1, #3b82f6);
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: var(--light-blue);
-            color: var(--primary-blue);
-            line-height: 1.6;
-        }
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: var(--bg-dark);
+        color: var(--text-light);
+        overflow-x: hidden;
+    }
 
-        header {
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-            color: var(--white);
-            text-align: center;
-            padding: 60px 20px;
-        }
+    /* NAVIGATION */
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 8%;
+    }
 
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
+    .logo {
+        font-weight: bold;
+        font-size: 1.5rem;
+        background: var(--gradient-text);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 
-        header p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: auto;
-        }
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+    }
 
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background: var(--white);
-            color: var(--primary-blue);
-            font-weight: bold;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: background 0.3s ease;
-        }
+    nav ul li a {
+        text-decoration: none;
+        color: var(--text-light);
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
 
-        .btn:hover {
-            background: var(--gray);
-        }
+    nav ul li a:hover {
+        color: #60a5fa;
+    }
 
-        section {
-            padding: 50px 20px;
-            max-width: 1100px;
-            margin: auto;
-        }
+    .btn-nav {
+        padding: 0.5rem 1.2rem;
+        border-radius: 999px;
+        background: var(--gradient-btn);
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
+    .btn-nav:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.5);
+    }
 
-        .feature {
-            background: var(--white);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
+    /* HERO */
+    .hero {
+        text-align: center;
+        padding: 5rem 10%;
+        position: relative;
+    }
 
-        .feature:hover {
-            transform: translateY(-5px);
-        }
+    .hero h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
 
-        footer {
-            background: var(--primary-blue);
-            color: var(--white);
-            text-align: center;
-            padding: 15px;
-            margin-top: 40px;
-        }
-    </style>
+    .gradient-text {
+        background: var(--gradient-text);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% 200%;
+        animation: gradientShift 4s ease infinite;
+    }
+
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .hero p {
+        color: var(--text-muted);
+        max-width: 700px;
+        margin: auto;
+        font-size: 1.1rem;
+    }
+
+    .btn-hero {
+        display: inline-block;
+        margin-top: 2rem;
+        padding: 1rem 2rem;
+        border-radius: 999px;
+        background: var(--gradient-btn);
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-hero:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+    }
+
+    /* FLOATING AVATARS */
+    .avatar {
+        position: absolute;
+        text-align: center;
+        animation: float 5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    .avatar img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 3px solid var(--bg-dark);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    }
+
+    .avatar span {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.85rem;
+        background: rgba(255,255,255,0.08);
+        padding: 3px 10px;
+        border-radius: 999px;
+    }
+
+    /* Avatar positions */
+    .avatar-1 { top: 20%; left: 8%; animation-delay: 0s; }
+    .avatar-2 { top: 25%; right: 8%; animation-delay: 1s; }
+    .avatar-3 { bottom: 20%; left: 15%; animation-delay: 0.5s; }
+    .avatar-4 { bottom: 18%; right: 15%; animation-delay: 1.5s; }
+</style>
 </head>
 <body>
 
-    <header>
-        <h1>My AI Journey</h1>
-        <p>Exploring the endless possibilities of Artificial Intelligence — from machine learning to everyday AI tools.</p>
-        <a href="#about" class="btn">Start Exploring</a>
-    </header>
+    <nav>
+        <div class="logo">My AI Journey</div>
+        <ul>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Pricing</a></li>
+        </ul>
+        <a href="#" class="btn-nav">Get Started</a>
+    </nav>
 
-    <section id="about">
-        <h2>About This Project</h2>
-        <p>My AI Journey is dedicated to documenting and sharing insights about Artificial Intelligence — the technology that’s shaping our present and defining our future. Whether you're a beginner or a seasoned AI enthusiast, there's something here for you.</p>
-    </section>
+    <section class="hero">
+        <h1>Your Guide to <span class="gradient-text">Artificial Intelligence</span></h1>
+        <p>From beginner tutorials to advanced AI insights, My AI Journey helps you understand, create, and thrive in the age of intelligent technology. Learn machine learning, explore cutting-edge tools, and discover ethical AI practices — all in one place.</p>
+        <a href="#" class="btn-hero">Start Your Journey</a>
 
-    <section>
-        <h2>Topics We Cover</h2>
-        <div class="features">
-            <div class="feature">
-                <h3>Machine Learning</h3>
-                <p>Learn the basics and advanced concepts of algorithms that allow machines to learn from data.</p>
-            </div>
-            <div class="feature">
-                <h3>AI Tools & Apps</h3>
-                <p>Discover the latest AI-powered tools transforming industries and personal productivity.</p>
-            </div>
-            <div class="feature">
-                <h3>Ethics in AI</h3>
-                <p>Explore the challenges and opportunities of responsible AI development.</p>
-            </div>
-            <div class="feature">
-                <h3>Future Trends</h3>
-                <p>Stay ahead with insights into where AI technology is headed next.</p>
-            </div>
+        <!-- Floating Avatars -->
+        <div class="avatar avatar-1">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Researcher">
+            <span>Researcher</span>
+        </div>
+        <div class="avatar avatar-2">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Developer">
+            <span>Developer</span>
+        </div>
+        <div class="avatar avatar-3">
+            <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Entrepreneur">
+            <span>Entrepreneur</span>
+        </div>
+        <div class="avatar avatar-4">
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Designer">
+            <span>Designer</span>
         </div>
     </section>
-
-    <footer>
-        <p>&copy; 2025 My AI Journey | Built with passion for AI</p>
-    </footer>
 
 </body>
 </html>
